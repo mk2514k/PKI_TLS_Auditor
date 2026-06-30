@@ -1,0 +1,32 @@
+
+==================================================
+  TLS Audit Report: google.com
+  Generated: 2026-06-28 20:35:32
+==================================================
+
+[1] Checking TLS connection to google.com:443
+    ✅ Connected successfully
+    TLS version: TLSv1.3
+
+[2] Checking certificate expiry
+    ✅ Certificate valid for 63 more days (expires 2026-08-31)
+
+[3] Checking hostname match for 'google.com'
+    SANs on cert: ['*.google.com', '*.appengine.google.com', '*.bdn.dev', '*.origin-test.bdn.dev', '*.cloud.google.com', '*.crowdsource.google.com', '*.datacompute.google.com', '*.google.ca', '*.google.cl', '*.google.co.in', '*.google.co.jp', '*.google.co.uk', '*.google.com.ar', '*.google.com.au', '*.google.com.br', '*.google.com.co', '*.google.com.mx', '*.google.com.tr', '*.google.com.vn', '*.google.de', '*.google.es', '*.google.fr', '*.google.hu', '*.google.it', '*.google.nl', '*.google.pl', '*.google.pt', '*.gemini.cloud.google.com', '*.gstatic.com', '*.metric.gstatic.com', '*.gvt1.com', '*.gcpcdn.gvt1.com', '*.gvt2.com', '*.gcp.gvt2.com', '*.url.google.com', '*.youtube-nocookie.com', '*.ytimg.com', 'ai.android', 'android.com', '*.android.com', '*.flash.android.com', 'g.co', '*.g.co', 'goo.gl', 'www.goo.gl', 'google-analytics.com', '*.google-analytics.com', 'google.com', 'googlecommerce.com', '*.googlecommerce.com', 'urchin.com', '*.urchin.com', 'youtu.be', 'youtube.com', '*.youtube.com', 'music.youtube.com', '*.music.youtube.com', 'youtubeeducation.com', '*.youtubeeducation.com', 'youtubekids.com', '*.youtubekids.com', 'yt.be', '*.yt.be', 'android.clients.google.com', '*.aistudio.google.com']
+    ✅ Hostname 'google.com' matches a SAN
+
+[4] Checking negotiated cipher suite
+    Cipher: TLS_AES_256_GCM_SHA384
+    TLS version: TLSv1.3
+    Key bits: 256
+    ✅ Cipher looks strong
+
+[5] Checking certificate chain
+    Subject (this cert): *.google.com
+    Issuer (signed by):  WR2
+    ✅ Full chain verified successfully
+
+==================================================
+  Audit complete.
+==================================================
+
