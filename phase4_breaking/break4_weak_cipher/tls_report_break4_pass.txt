@@ -1,0 +1,30 @@
+Enter hostname to audit (e.g. localhost): 
+============================================================
+  TLS Audit Report
+  Target   : server.cyberpathway.lab
+  Generated: 2026-06-29 16:10:48
+============================================================
+
+[*] Checking TLS connection to server.cyberpathway.lab:443
+
+[PASS] TLS Connection
+  Detail     : Connected. TLS version: TLSv1.3
+
+[PASS] Certificate Expiry
+  Detail     : Valid for 363 more days (expires 2027-06-28)
+
+[PASS] Hostname / SAN Match
+  Detail     : SANs on cert: ['server.cyberpathway.lab', 'server'] — 'server.cyberpathway.lab' matched
+
+[PASS] Cipher Suite
+  Detail     : Cipher: TLS_AES_256_GCM_SHA384 | TLS: TLSv1.3 | Key bits: 256
+
+[PASS] Chain of Trust
+  Detail     : Subject: server.cyberpathway.lab | Issuer: mk-intermediateCA
+
+============================================================
+  Audit complete.
+============================================================
+
+
+Report saved to: tls_report_server.cyberpathway.lab_20260629_161048.txt
