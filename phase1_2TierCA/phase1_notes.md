@@ -4,7 +4,7 @@
 
 This is the full build log- every command, every config decision, every "wait, why did that happen" moment. The README has the polished version of the mistakes; this has the raw trail of getting there.
 
-## Background- what a 2-tier CA actually is
+## Phase 1 Overview
 
 **Root CA**
 Self-signed. Sits at the top of the chain and issues certs to the Sub/Intermediate CA. Because revoking or expiring the root cert breaks trust for the *entire* chain underneath it, it's given a long expiration (5-30 years in real deployments) and is meant to operate in a highly secure, rarely-touched environment. You don't want to be regenerating your root often.
@@ -29,7 +29,7 @@ Inside each CA's `data/` folder, OpenSSL expects specific filenames:
 - `serial.dat` : the stamp. Keeps the running serial number so every issued cert gets a unique identifier.
 - `crl_number` : version counter, used the next time a CRL gets generated.
 
-### Final folder structure
+### Directory Architecture
 
 ```
 Phase1_2TierCA/
