@@ -2,7 +2,7 @@
 
 [← Back to Phase 1 README](./README.md) · [Root README](../README.md)
 
-This is the full build log — every command, every config decision, every "wait, why did that happen" moment. The README has the polished version of the mistakes; this has the raw trail of getting there.
+This is the full build log- every command, every config decision, every "wait, why did that happen" moment. The README has the polished version of the mistakes; this has the raw trail of getting there.
 
 ## Background- what a 2-tier CA actually is
 
@@ -81,11 +81,11 @@ emailAddress            = optional
 
 **Key size** — set to 4096 bits. Higher bit count, more secure key. General enterprise convention (which I matched here):
 
-- Root CA — 4096, 10 years
-- Intermediate CA — 4096, 5 years
-- Leaf certs — 2048, 1-2 years
+- Root CA: 4096, 10 years
+- Intermediate CA: 4096, 5 years
+- Leaf certs: 2048, 1-2 years
 
-**RSA over ECDSA** — went with RSA since it's still the industry default in most environments I'd realistically encounter, even though ECDSA is more efficient and produces smaller keys.
+**RSA over ECDSA**: went with RSA since it's still the industry default in most environments I'd realistically encounter, even though ECDSA is more efficient and produces smaller keys.
 
 The `req_distinguished_name` section in the config is where the Root CA's actual identity gets defined — this is what shows up when anything inspects the cert later.
 
@@ -93,7 +93,7 @@ The `req_distinguished_name` section in the config is where the Root CA's actual
 
 Chose RSA 4096 (reasoning above), modified the key generation command to match my folder paths.
 
-**Mistake — locked myself out of my own key.** Typed the PEM passphrase, but it didn't save correctly — and before checking that, I ran `chmod 400` on the key file. With 400 permissions and a key that hadn't saved properly, I had no way back in. Deleted it, regenerated, and this time confirmed the file actually saved and was readable *before* locking down permissions.
+**Mistake- locked myself out of my own key.** Typed the PEM passphrase, but it didn't save correctly and before checking that, I ran `chmod 400` on the key file. With 400 permissions and a key that hadn't saved properly, I had no way back in. Deleted it, regenerated, and this time confirmed the file actually saved and was readable *before* locking down permissions.
 
 PEM passphrase used: `sanitised for publication`
 
@@ -106,7 +106,7 @@ Used the absolute filepath throughout rather than relative — longer to type, b
 
 ```bash
 projects/pki-tls-auditor/rootCA/rootCA.cnf \
-projects/pki-tls-auditor/rootCA/private/rootCA.key \
+/filepath to rootCA.key \
   -new -x509 -sha256 -extensions v3_ca -days 3650 \
   projects/pki-tls-auditor/certs/rootCA/cert/rootCA.cert
 ```
@@ -117,16 +117,16 @@ Inspected the result with `x509 -text` to confirm the fields matched what I expe
 
 ## Intermediate CA config
 
-Lifespan set to 1825 days (5 years) — shorter than the root, in line with the industry convention noted above.
+Lifespan set to 1825 days (5 years)- shorter than the root, in line with the industry convention noted above.
 
-Added an `alt_names` block to this config — this is where the leaf certs generated *from* this Intermediate get their SAN entries defined.
+Added an `alt_names` block to this config, this is where the leaf certs generated *from* this Intermediate get their SAN entries defined.
 
 ## Generating the Intermediate CA private key
 
 Same process as the Root key.
 
 ```bash
-openssl genrsa -aes256 -out projects/pki-tls-auditor/intermediateCA/private/intermediateCA.key 4096
+openssl genrsa -aes256 -out filepath to intermediateCA.key 4096
 ```
 
 PEM passphrase: `sanitised for publication`
