@@ -1,4 +1,4 @@
-# Phase 1- Build Notes
+# Phase 1: Build Notes
 
 [← Back to Phase 1 README](./README.md) · [Root README](../README.md)
 
