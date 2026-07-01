@@ -1,4 +1,4 @@
-# PKI & TLS Auditor: Custom 2-Tier Certificate Authority & Validation Engine
+# PKI & TLS Auditor
 
 A private 2-tier certificate authority built from scratch in OpenSSL, wired into an Nginx TLS server, and checked by a python auditor to validate the whole chain. The auditor verifies cert validity, hostname match, cipher strength, chain of trust, and protocol version. I then deliberately broke four parts of it to confirm the auditor actually catches what it claims to catch.
 
