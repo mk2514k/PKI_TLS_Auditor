@@ -4,7 +4,7 @@ A private 2-tier certificate authority built from scratch in OpenSSL, wired into
 
 ## The Core System
 
-A working private CA. Root CA signs an Intermediate CA, the Intermediate signs a leaf cert (in this porject- a web server cert), that cert gets installed on Nginx. The script audits the live TLS connection against six separate checks. Once the whole thing was running cleanly, I broke it on purpose four separate times (expired cert, SAN mismatch, weak cipher, broken chain) and documented exactly what failed, why, and how it was remediated.
+A working private CA. Root CA signs an Intermediate CA, the Intermediate signs a leaf cert (in this project- a web server cert), that cert gets installed on Nginx. The script audits the live TLS connection against six separate checks. Once the whole thing was running cleanly, I broke it on purpose four separate times (expired cert, SAN mismatch, weak cipher, broken chain) and documented exactly what failed, why, and how it was remediated.
 
 ## Purpose & Philosophy
 
