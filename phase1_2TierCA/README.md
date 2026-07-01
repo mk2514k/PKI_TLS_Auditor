@@ -1,4 +1,4 @@
-# Phase 1 — 2-Tier CA
+# Phase 1: 2 Tier CA Authority
 
 [← Back to root README](../README.md) · Full build log: [NOTES.md](./NOTES.md)
 
