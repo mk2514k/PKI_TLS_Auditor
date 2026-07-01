@@ -1,0 +1,5 @@
+R	270626163305Z	260629102709Z	D790221AC4FD301E	unknown	/C=GB/ST=England/O=CyberPathway/OU=EnterprisePKI/CN=server.cyberpathway.lab/emailAddress=PKI@projects.lab
+R	270628102105Z	260629102540Z	743E55F050892F979E5D35C0939E2F580E8A0877	unknown	/C=GB/ST=England/L=London/O=CyberPathway/OU=EnterprisePKI/CN=server.cyberpathway.lab/emailAddress=PKI@projects.lab
+R	230102000000Z	260629105846Z	D790221AC4FD301F	unknown	/C=GB/ST=England/O=CyberPathway/OU=EnterprisePKI/CN=server.cyberpathway.lab/emailAddress=PKI@projects.lab
+V	230102000000Z		D790221AC4FD3020	unknown	/C=GB/ST=England/O=CyberPathway/OU=EnterprisePKI/CN=server.cyberpathway.lab/emailAddress=PKI@projects.lab
+V	310628124424Z		D790221AC4FD3021	unknown	/C=GB/ST=England/O=CyberPathway/OU=EnterprisePKI/CN=serverBad.cyberpathway.lab/emailAddress=PKI@projects.lab
