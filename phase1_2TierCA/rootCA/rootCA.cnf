@@ -1,0 +1,75 @@
+```
+[ ca ]
+default_ca = CA_default
+
+[ CA_default ]
+# Absolute paths  (sanitised pathways for publication)
+dir               = /projects/pki-tls-auditor/rootCA
+certs             = /projects/pki-tls-auditor/certs/rootCA/cert
+crl_dir           = /projects/pki-tls-auditor/rootCA/crl
+new_certs_dir     = /projects/pki-tls-auditor/certs/rootCA/issued-certs
+database          = /projects/pki-tls-auditor/rootCA/data/index.dat
+serial            = /projects/pki-tls-auditor/rootCA/data/serial.dat
+crlnumber         = /projects/pki-tls-auditor/rootCA/data/crl_number
+
+certificate       = /rojects/pki-tls-auditor/certs/rootCA/cert/rootCA.cert
+private_key       = sensitive
+
+crl               = projects/pki-tls-auditor/rootCA/crl/rootCA.crl
+crl_extensions    = crl_ext
+default_crl_days  = 30
+
+default_md        = sha256
+# 10 years expiration
+default_days      = 3650
+preserve          = no
+policy            = policy_strict
+
+[ policy_strict ]
+countryName             = match
+stateOrProvinceName     = match
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+# generating a cert req
+[ req ]
+default_bits        = 4096
+distinguished_name  = req_distinguished_name
+string_mask         = utf8only
+default_md          = sha256
+x509_extensions     = v3_ca
+
+[ req_distinguished_name ]
+countryName                     = Country Name
+stateOrProvinceName             = County Name
+localityName                    = City Name
+organizationName                = Organization Name
+organizationalUnitName          = Organizational Unit Name
+commonName                      = Full Name
+emailAddress                    = Email Address
+
+countryName_default             = GB
+stateOrProvinceName_default     = England
+localityName_default            = London
+organizationName_default        = CyberPathway
+organizationalUnitName_default  = EnterprisePKI
+emailAddress_default            = PKI@projects.lab
+
+[ v3_ca ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer
+basicConstraints        = critical, CA:true
+keyUsage                = critical, digitalSignature, cRLSign, keyCertSign
+
+[ v3_intermediate_ca ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer
+basicConstraints        = critical, CA:true, pathlen:0
+keyUsage                = critical, digitalSignature, cRLSign, keyCertSign
+
+[ crl_ext ]
+authorityKeyIdentifier = keyid:always
+
+```
