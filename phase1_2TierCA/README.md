@@ -13,14 +13,9 @@ This is where the actual trust chain gets built. A self-signed Root CA that sign
 │   ├── intermediateCA/
 │   │   ├── cert/
 │   │   │   ├── intermediateCA.cert
-│   │   │   └── intermediateCA.srl
 │   │   └── issued-certs/
-│   │       ├── D790221AC4FD301E.pem
-│   │       ├── D790221AC4FD301F.pem
-│   │       ├── D790221AC4FD3020.pem
-│   │       ├── D790221AC4FD3021.pem
 │   │       ├── server.cert
-│   │       ├── server_expired.cert.pem
+│   │       ├── server_expired.cert
 │   │       └── server_sanmismatch.cert
 │   └── rootCA/
 │       ├── cert/
@@ -29,7 +24,6 @@ This is where the actual trust chain gets built. A self-signed Root CA that sign
 │           ├── 1000.pem
 │           └── 4B2407C0105DB5A5.pem
 ├── intermediateCA/
-│   ├── crl/
 │   ├── csr/
 │   │   └── intermediateCA.csr
 │   ├── data/
@@ -48,20 +42,12 @@ This is where the actual trust chain gets built. A self-signed Root CA that sign
 │   │   └── server_sanmismatch.csr
 │   ├── leafCert-server.cnf
 │   ├── leafCert-server-SANmismatch.cnf
-│   └── private/
 ├── notes.md
 └── rootCA/
-    ├── crl/
-    ├── csr/
     ├── data/
     │   ├── crl_number
     │   ├── index.dat
-    │   ├── index.dat.attr
-    │   ├── index.dat.attr.old
-    │   ├── index.dat.old
     │   ├── serial.dat
-    │   └── serial.dat.old
-    ├── private/
     └── rootCA.cnf
 
 23 directories, 34 files
