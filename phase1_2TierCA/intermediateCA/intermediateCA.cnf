@@ -3,24 +3,24 @@
 default_ca = CA_default
 
 [ CA_default ]
-# Absolute paths
-dir               = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/intermediateCA
-certs             = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/certs/intermediateCA/cert
-crl_dir           = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/crl
-new_certs_dir     = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/certs/intermediateCA/issued-certs
-database          = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/data/index.dat
-serial            = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/data/serial.dat
-crlnumber         = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/data/crl_number
+# Absolute paths (santised for viewing purposes)
+dir               = /projects/pki-tls-auditor/phase1_2TierCA/intermediateCA
+certs             = /projects/pki-tls-auditor/phase1_2TierCA/certs/intermediateCA/cert
+crl_dir           = /projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/crl
+new_certs_dir     = /projects/pki-tls-auditor/phase1_2TierCA/certs/intermediateCA/issued-certs
+database          = /projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/data/index.dat
+serial            = /projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/data/serial.dat
+crlnumber         = /projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/data/crl_number
 
-certificate       = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/certs/intermediateCA/cert/intermediateCA.cert
-private_key       = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/private/intermediateCA.key
+certificate       = projects/pki-tls-auditor/phase1_2TierCA/certs/intermediateCA/cert/intermediateCA.cert
+private_key       = sensitive--
 
-crl               = /home/mk/Documents/CyberSecurityPathway/projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/crl/intermediateCA.crl
+crl               = /projects/pki-tls-auditor/phase1_2TierCA/intermediateCA/crl/intermediateCA.crl
 crl_extensions    = crl_ext
 default_crl_days  = 30
 
 default_md        = sha256
-# 5 years expiration — intermediate lives shorter than root
+# 5 years expiration- intermediate lives shorter than root
 default_days      = 1825
 preserve          = no
 policy            = policy_strict
@@ -68,7 +68,7 @@ subjectAltName          = @alt_names
 
 [ alt_names ]
 # will populate when gen each leaf cert
-DNS.1 = your-server.internal
+DNS.1 = server.cyberpathway.lab
 DNS.2 = server
 
 [ crl_ext ]
