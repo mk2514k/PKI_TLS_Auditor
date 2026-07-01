@@ -1,16 +1,16 @@
 # PKI & TLS Auditor: Custom 2-Tier Certificate Authority & Validation Engine
 
-A private 2-tier certificate authority built from scratch in OpenSSL, wired into an Nginx TLS server, and checked by a Python auditor I wrote to validate the whole chain — cert validity, hostname match, cipher strength, chain of trust, and protocol version. Then I deliberately broke four parts of it to confirm the auditor actually catches what it claims to catch.
+A private 2-tier certificate authority built from scratch in OpenSSL, wired into an Nginx TLS server, and checked by a python auditor to validate the whole chain. The auditor verifies cert validity, hostname match, cipher strength, chain of trust, and protocol version. I then deliberately broke four parts of it to confirm the auditor actually catches what it claims to catch.
 
-## What this is
+## The Core System
 
-This isn't a tutorial walkthrough. It's a working private CA — Root CA signs an Intermediate CA, the Intermediate signs a server cert, that cert gets installed on Nginx, and a Python script audits the live TLS connection against six separate checks. Once the whole thing was running cleanly, I broke it on purpose four separate times (expired cert, SAN mismatch, weak cipher, broken chain) and documented exactly what failed, why, and how I fixed it.
+A working private CA. Root CA signs an Intermediate CA, the Intermediate signs a leaf cert (in this porject- a web server cert), that cert gets installed on Nginx. The script audits the live TLS connection against six separate checks. Once the whole thing was running cleanly, I broke it on purpose four separate times (expired cert, SAN mismatch, weak cipher, broken chain) and documented exactly what failed, why, and how it was remediated.
 
-## Why I built it
+## Purpose & Philosophy
 
-I wanted to actually understand what happens during a TLS handshake instead of just being able to define one. Reading about chain of trust is one thing — generating a root key, watching it sign an intermediate, watching that sign a leaf cert, and then having my own script reject that cert when something's wrong is a completely different level of understanding. The breaking phase mattered just as much as the building phase. Anyone can stand up a CA by following a guide. Fewer people deliberately try to break their own work to see if their tooling actually does its job.
+I wanted to actually understand what happens during a TLS handshake instead of just defining one theoretically. Reading about chain of trust is one thing; generating a root key, watching it sign an intermediate, watching that sign a leaf cert, and then having my own script reject that cert when something's wrong is a completely different level of understanding. The breaking phase mattered just as much as the building phase. Anyone can stand up a CA by following a guide. Fewer people deliberately try to break their own work to see if their tooling actually does its job.
 
-## Architecture
+## Trust Chain & Topology
 
 ```
 Root CA (self-signed, 10yr)
@@ -28,7 +28,7 @@ Nginx (TLS 1.2/1.3, port 443)
 Python auditor (6 checks) ──► pass/fail TLS report
 ```
 
-## Phase breakdown
+## Implementation Phases
 
 | Phase | What it proves |
 |---|---|
@@ -37,9 +37,9 @@ Python auditor (6 checks) ──► pass/fail TLS report
 | [Phase 3 — Python Auditor](./phase3_pythonAuditor/README.md) | Wrote the script that checks all of the above — connection, expiry, SAN, cipher, chain, protocol version — and explains every failure in plain language. |
 | [Phase 4 — Breaking](./phase4_breaking/README.md) | Broke the system four different ways on purpose and used the auditor to catch each one, which also exposed and fixed real bugs in the auditor itself. |
 
-## The auditor — what it checks
+## Audit Logic & Scope
 
-| Check | What it validates | Failure behaviour |
+| Check | Audit Criteria | Failure behaviour |
 |---|---|---|
 | TLS Connection | Handshake completes, protocol negotiated | Fails gracefully, explains whether it's a TLS error or a network error |
 | Cert Expiry | Days remaining, expired flag, 30-day warning window | FAIL with remediation, separates "expired" from "expiring soon" |
@@ -50,7 +50,7 @@ Python auditor (6 checks) ──► pass/fail TLS report
 
 Full breakdown of each check, including the code, lives in the [Phase 3 README](./phase3_pythonAuditor/README.md).
 
-## Key decisions
+## Architectural Decisions
 
 A few choices that aren't obvious just from looking at the code or the configs, but mattered:
 
@@ -60,17 +60,17 @@ A few choices that aren't obvious just from looking at the code or the configs, 
 
 **A cert bundle instead of just the leaf cert on Nginx.** TLS handshakes were failing intermittently in a way that looked fine locally but wasn't. Turned out Nginx was only serving the leaf cert — clients without the intermediate cached locally had no way to complete the chain walk. Concatenating leaf + intermediate into one `server-chain.pem` fixed it permanently.
 
-## Mistakes made
+## Technical Challenges & Takeaways
 
-I'm leaving these in because they're a more honest record of the work than a clean build log would be. Three worth calling out:
+I came across a multitude of challenges with this being my first attempt at a project of this nature. Three worth calling out:
 
 - **Locked myself out of my own root key.** I ran `chmod 400` on the private key file *before* confirming the passphrase had saved correctly. Ended up with an inaccessible key and had to delete and regenerate it. Now I always confirm the file's actually written and readable before locking it down.
 - **SAN mismatch on the leaf cert.** Covered above under Key Decisions, but worth repeating here because it's the single mistake that taught me the most about how OpenSSL signing actually works under the hood.
 - **Corrupted the intermediate private key from a passphrase typo.** When `-aes256` key generation asks for a passphrase twice and the two entries don't match, OpenSSL doesn't always fail cleanly — it can write a malformed key file using whatever it caught on the first entry. Found this the hard way.
 
-Full mistake-by-mistake breakdown, with screenshots, is in each phase's own README and notes file.
+Full mistake-by-mistake breakdown, with screenshots, can be found in each phase's own README and notes file.
 
-## How to run the auditor
+## Getting Started- Auditor
 
 ```bash
 cd phase3_pythonAuditor
@@ -78,7 +78,7 @@ python3 auditor.py
 # enter the hostname to audit, e.g. server.cyberpathway.lab
 ```
 
-## Sample output
+## Sample report
 
 A clean pass:
 
