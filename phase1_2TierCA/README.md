@@ -6,51 +6,34 @@
 
 This is where the actual trust chain gets built. A self-signed Root CA that signs an Intermediate CA, which then signs the leaf cert that everything downstream depends on. Doing this by hand is what made "chain of trust" stop being a phrase from a textbook; it became something tangible-something I could point at and explain: *this* cert is trusted because this one signed it, which is trusted because this one signed it.
 ```
-.
+Phase1_2TierCA/
 ├── auditor/
 │   └── sample_reports/
 ├── certs/
 │   ├── intermediateCA/
 │   │   ├── cert/
-│   │   │   ├── intermediateCA.cert
 │   │   └── issued-certs/
-│   │       ├── server.cert
-│   │       ├── server_expired.cert
-│   │       └── server_sanmismatch.cert
 │   └── rootCA/
 │       ├── cert/
-│       │   └── rootCA.cert
 │       └── issued-certs/
-│           ├── 1000.pem
-│           └── 4B2407C0105DB5A5.pem
 ├── intermediateCA/
 │   ├── csr/
-│   │   └── intermediateCA.csr
 │   ├── data/
 │   │   ├── crl_number
 │   │   ├── index.dat
-│   │   ├── index.dat.attr
-│   │   ├── index.dat.attr.old
-│   │   ├── index.dat.old
-│   │   ├── serial.dat
-│   │   └── serial.dat.old
-│   ├── intermediateCA.cnf
+│   │   └── serial.dat
 │   └── private/
 ├── leafCerts/
 │   ├── csr/
-│   │   ├── server.csr
-│   │   └── server_sanmismatch.csr
-│   ├── leafCert-server.cnf
-│   ├── leafCert-server-SANmismatch.cnf
+│   └── private/
 ├── notes.md
-└── rootCA/
-    ├── data/
-    │   ├── crl_number
-    │   ├── index.dat
-    │   ├── serial.dat
-    └── rootCA.cnf
-
-23 directories, 34 files
+├── rootCA/
+│   ├── data/
+│   │   ├── crl_number
+│   │   ├── index.dat
+│   │   └── serial.dat
+│   └── private/
+└── screenshots/
 
 ```
 
