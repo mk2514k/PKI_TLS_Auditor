@@ -95,7 +95,7 @@ Chose RSA 4096 (reasoning above), modified the key generation command to match m
 
 **Mistake — locked myself out of my own key.** Typed the PEM passphrase, but it didn't save correctly — and before checking that, I ran `chmod 400` on the key file. With 400 permissions and a key that hadn't saved properly, I had no way back in. Deleted it, regenerated, and this time confirmed the file actually saved and was readable *before* locking down permissions.
 
-PEM passphrase used: `mk-rootCA!2026cybers3c`
+PEM passphrase used: `sanitised for publication`
 
 ![Passphrase mistake, step 1](../screenshots/pem%20passphrase%20mistake1.png)
 ![Passphrase mistake, step 2](../screenshots/pem%20passphrase%20mistake2.png)
@@ -129,7 +129,7 @@ Same process as the Root key.
 openssl genrsa -aes256 -out projects/pki-tls-auditor/intermediateCA/private/intermediateCA.key 4096
 ```
 
-PEM passphrase: `mk-1ntermediateCA?2026cybers3c`
+PEM passphrase: `sanitised for publication`
 
 ## Generating the Intermediate's CSR
 
@@ -145,8 +145,8 @@ Used the Root's passphrase here, since the Root is the one doing the signing. Op
 
 Ran an inspection afterward to confirm the signed cert's issuer field correctly pointed back to the Root.
 
-![Intermediate cert inspection, part 1]([../screenshots/intermediateCA-cert-inspection1.png](https://github.com/mk2514k/PKI_TLS_Auditor/blob/28aa54495f8e664599412dc4531ae8aefd8d57b2/screenshots/intermediateCA-cert-inspection1.png)
-![Intermediate cert inspection, part 2]([../screenshots/intermediateCA-cert-inspection2.png](https://github.com/mk2514k/PKI_TLS_Auditor/blob/28aa54495f8e664599412dc4531ae8aefd8d57b2/screenshots/intermediateCA-cert-inspection2.png)
+![Intermediate cert inspection, part 1](https://github.com/mk2514k/PKI_TLS_Auditor/blob/28aa54495f8e664599412dc4531ae8aefd8d57b2/screenshots/intermediateCA-cert-inspection1.png)
+![Intermediate cert inspection, part 2](https://github.com/mk2514k/PKI_TLS_Auditor/blob/28aa54495f8e664599412dc4531ae8aefd8d57b2/screenshots/intermediateCA-cert-inspection2.png)
 
 ## Verifying the chain (midpoint check)
 
