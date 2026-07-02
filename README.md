@@ -48,7 +48,7 @@ Python auditor (6 checks) ──► pass/fail TLS report
 | Chain of Trust | Full verification up to the trusted root | Explains what broke (missing intermediate vs. self-signed)|
 | Protocol Version | Flags TLS 1.0/1.1, SSLv2/v3 | Flags old versions with the relevant CVE/attack context |
 
-Full breakdown of each check, including the code, lives in the [Phase 3 README](./phase3_pythonAuditor/README.md).
+Full breakdown of each check, including the code, lives in the [Phase 3 README](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase3_pythonAuditor/README.md).
 
 ## Architectural Decisions
 
@@ -99,4 +99,4 @@ A deliberate failure (expired cert, from the Phase 4 breaking exercise):
   Fix        : Reissue the certificate with a valid expiry window and redeploy to Nginx.
 ```
 
-Full pass/fail reports for all four breaks are in [Phase 4](./phase4_breaking/README.md).
+Full pass/fail reports for all four breaks are in [Phase 4](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/README.md).
