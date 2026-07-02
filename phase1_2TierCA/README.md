@@ -1,6 +1,6 @@
 # Phase 1: 2 Tier CA Authority
 
-[← Back to root README](../README.md) · Full build log: [NOTES.md](./NOTES.md)
+[← Back to root README](../README.md) · Full build log: [NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase1_2TierCA/phase1_notes.md)
 
 ## Core Phase Objective
 
@@ -92,4 +92,4 @@ intermediateCA.cert: OK
 
 ![Full chain verification output](../screenshots/verification%20of%20full%20chain.png)
 
-Command-by-command build sequence, every config file decision, and the raw troubleshooting trail for all four mistakes above live in [NOTES.md](./NOTES.md).
+Command-by-command build sequence, every config file decision, and the raw troubleshooting trail for all four mistakes above live in [NOTES.md]([./NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase1_2TierCA/phase1_notes.md)).
