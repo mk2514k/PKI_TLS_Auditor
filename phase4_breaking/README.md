@@ -52,9 +52,13 @@ Reports: [`SAN mismatch/tls_report_break2_fail.txt`](https://github.com/mk2514k/
 
 **What the auditor caught:** Chain of Trust FAIL, with an explanation that covers exactly why this failure is insidious. Clients that have the Intermediate cached locally (like the machine that built the CA) will appear to connect fine, while fresh clients fail. It's the kind of bug that looks like a user problem until you understand what's actually happening.
 
-[Nginx config with weak cipher break applied](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break4_weak_cipher/gninx%20config-weak%20cipher%20break.png)
+![Nginx config with weak cipher break applied](https://github.com/mk2514k/PKI_TLS_Auditor/blob/e62c8fe24a81e2bc40a39aa92d055723db619bce/phase4_breaking/break4_weak_cipher/gninx%20config-weak%20cipher%20break.png)
 
-Reports: [`broken chain of trust/tls_report_break3_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_fail.txt) · [`broken chain of trust/tls_report_break3_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_pass.txt`)
+Reports:
+
+[`broken chain of trust/tls_report_break3_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_fail.txt) 
+
+[`broken chain of trust/tls_report_break3_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_pass.txt`)
 
 
 ## Break 4: Weak cipher suite
