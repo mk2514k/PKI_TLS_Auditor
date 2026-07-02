@@ -33,7 +33,7 @@ The fail and pass reports for each break are in the subdirectories below.
 
 There was also a CA duplicate entry error. OpenSSL's index.dat won't let you issue a new cert for a subject that already has a valid one on record. I had to revoke the existing valid certs before reissuing the expired one. This is how real CA management works: you can't just issue a duplicate, you have to revoke the existing entry first.
 
-Reports: [`expired cert/tls_report_break1_fail.txt`](./expired%20cert/tls_report_break1_fail.txt) · [`expired cert/tls_report_break1_pass.txt`](./expired%20cert/tls_report_break1_pass.txt)
+Reports: [`expired cert/tls_report_break1_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break1_expired_cert/tls_report_break1_fail.txt)· [`expired cert/tls_report_break1_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break1_expired_cert/tls_report_break1_pass.txt)
 
 ## Break 2: SAN mismatch
 
@@ -43,7 +43,7 @@ Reports: [`expired cert/tls_report_break1_fail.txt`](./expired%20cert/tls_report
 
 The output also explains why this matters. Modern TLS ignores the CN field entirely and only checks SANs, so a wrong SAN is a hard failure regardless of what the CN says.
 
-Reports: [`SAN mismatch/tls_report_break2_fail.txt`](./SAN%20mismatch/tls_report_break2_fail.txt) · [`SAN mismatch/tls_report_break2_pass.txt`](./SAN%20mismatch/tls_report_break2_pass.txt)
+Reports: [`SAN mismatch/tls_report_break2_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break2_san_mismatch/tls_report_break2_fail.txt) · [`SAN mismatch/tls_report_break2_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break2_san_mismatch/tls_report_break2_pass.txt)
 
 ## Break 3: Weak cipher suite
 
@@ -53,7 +53,7 @@ Reports: [`SAN mismatch/tls_report_break2_fail.txt`](./SAN%20mismatch/tls_report
 
 ![Nginx config with weak cipher break applied](./weak%20cipher%20suite/gninx%20config-weak%20cipher%20break.png)
 
-Reports: [`weak cipher suite/tls_report_break4_fail.txt`](./weak%20cipher%20suite/tls_report_break4_fail.txt) · [`weak cipher suite/tls_report_break4_pass.txt`](./weak%20cipher%20suite/tls_report_break4_pass.txt)
+Reports: [`broken chain of trust/tls_report_break3_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_fail.txt) · [`broken chain of trust/tls_report_break3_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_pass.txt`)
 
 ## Break 4: Broken chain of trust
 
@@ -61,7 +61,7 @@ Reports: [`weak cipher suite/tls_report_break4_fail.txt`](./weak%20cipher%20suit
 
 **What the auditor caught:** Chain of Trust FAIL, with an explanation that covers exactly why this failure is insidious. Clients that have the Intermediate cached locally (like the machine that built the CA) will appear to connect fine, while fresh clients fail. It's the kind of bug that looks like a user problem until you understand what's actually happening.
 
-Reports: [`broken chain of trust/tls_report_break3_fail.txt`](./broken%20chain%20of%20trust/tls_report_break3_fail.txt) · [`broken chain of trust/tls_report_break3_pass.txt`](./broken%20chain%20of%20trust/tls_report_break3_pass.txt)
+Reports: [`weak cipher suite/tls_report_break4_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break4_weak_cipher/tls_report_break4_fail.txt) · [`weak cipher suite/tls_report_break4_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break4_weak_cipher/tls_report_break4_pass.txt)
 
 ## Auditor Enhancements post Break 1:
 
