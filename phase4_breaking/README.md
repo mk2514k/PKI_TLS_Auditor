@@ -45,21 +45,23 @@ The output also explains why this matters. Modern TLS ignores the CN field entir
 
 Reports: [`SAN mismatch/tls_report_break2_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break2_san_mismatch/tls_report_break2_fail.txt) · [`SAN mismatch/tls_report_break2_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break2_san_mismatch/tls_report_break2_pass.txt)
 
-## Break 3: Weak cipher suite
 
-**What was broken:** Modified `cyberpathway.conf` to include weak ciphers (`RC4`, `3DES`, `AES128-SHA`) and allow older TLS versions (`TLSv1`, `TLSv1.1`). Also patched the corresponding weak cipher entries into the `WEAK_CIPHERS` dictionary in `auditor.py` so the check had the definitions it needed to flag them.
+## Break 3: Broken chain of trust
 
-**What the auditor caught:** Cipher Suite FAIL, naming the specific weakness (e.g. SWEET32 for 3DES, POODLE/Lucky13 for CBC-mode ciphers) and pointing directly at the Nginx directive to fix.
+**What was broken:** Created a leaf-only bundle (just `server.cert`) with no Intermediate and swapped it into Nginx. This simulates a misconfigured server that isn't serving the full chain.
+
+**What the auditor caught:** Chain of Trust FAIL, with an explanation that covers exactly why this failure is insidious. Clients that have the Intermediate cached locally (like the machine that built the CA) will appear to connect fine, while fresh clients fail. It's the kind of bug that looks like a user problem until you understand what's actually happening.
 
 ![Nginx config with weak cipher break applied](./weak%20cipher%20suite/gninx%20config-weak%20cipher%20break.png)
 
 Reports: [`broken chain of trust/tls_report_break3_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_fail.txt) · [`broken chain of trust/tls_report_break3_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_pass.txt`)
 
-## Break 4: Broken chain of trust
 
-**What was broken:** Created a leaf-only bundle (just `server.cert`) with no Intermediate and swapped it into Nginx. This simulates a misconfigured server that isn't serving the full chain.
+## Break 4: Weak cipher suite
 
-**What the auditor caught:** Chain of Trust FAIL, with an explanation that covers exactly why this failure is insidious. Clients that have the Intermediate cached locally (like the machine that built the CA) will appear to connect fine, while fresh clients fail. It's the kind of bug that looks like a user problem until you understand what's actually happening.
+**What was broken:** Modified `cyberpathway.conf` to include weak ciphers (`RC4`, `3DES`, `AES128-SHA`) and allow older TLS versions (`TLSv1`, `TLSv1.1`). Also patched the corresponding weak cipher entries into the `WEAK_CIPHERS` dictionary in `auditor.py` so the check had the definitions it needed to flag them.
+
+**What the auditor caught:** Cipher Suite FAIL, naming the specific weakness (e.g. SWEET32 for 3DES, POODLE/Lucky13 for CBC-mode ciphers) and pointing directly at the Nginx directive to fix.
 
 Reports: [`weak cipher suite/tls_report_break4_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break4_weak_cipher/tls_report_break4_fail.txt) · [`weak cipher suite/tls_report_break4_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break4_weak_cipher/tls_report_break4_pass.txt)
 
