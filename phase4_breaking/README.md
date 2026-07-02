@@ -1,6 +1,6 @@
 # Phase 4: Breaking
 
-[← Root README](../README.md) · [← Phase 3](../phase3_pythonAuditor/README.md) · Full build log: [NOTES.md](./NOTES.md)
+[← Root README](../README.md) · [← Phase 3](../phase3_pythonAuditor/README.md) · Full build log: [NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/phase4_notes.md)
 
 ## Core Phase Objective
 
@@ -71,4 +71,4 @@ It's worth being specific about this, because "Break 1 made the auditor more rob
 
 **Post Break 1:** `SSLCertVerificationError` is caught and handled gracefully in the cipher check. The expiry check has a clean fallback when the cert can't be retrieved via the normal path. Trust anchor loading is consistent. The auditor produces a complete report even when the target is broken.
 
-Full break-by-break command sequence and raw troubleshooting notes are in [NOTES.md](./NOTES.md).
+Full break-by-break command sequence and raw troubleshooting notes are in [NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/phase4_notes.md).
