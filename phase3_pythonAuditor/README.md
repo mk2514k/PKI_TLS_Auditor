@@ -1,6 +1,6 @@
 # Phase 3: Python TLS Auditor
 
-[← Root README](../README.md) · [← Phase 2](../phase2_NginxConfig/README.md) · [Phase 4 →](../phase4_breaking/README.md) · Full build log: [NOTES.md](./NOTES.md)
+[← Root README](../README.md) · [← Phase 2](../phase2_NginxConfig/README.md) · [Phase 4 →](../phase4_breaking/README.md) · Full build log: [NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase3_pythonAuditor/phase3_notes.md)
 
 ## Core Phase Objective
 
@@ -138,7 +138,7 @@ Every run saves a report to a timestamped `.txt` file. The format is consistent 
 
 Real pass and fail reports from the Phase 4 breaking exercises are in [phase4_breaking/](../phase4_breaking/).
 
-Full code walkthrough, design decisions, and mid-build adjustments are in [NOTES.md](./NOTES.md).
+Full code walkthrough, design decisions, and mid-build adjustments are in [NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase3_pythonAuditor/phase3_notes.md).
 
 ![Full Phase 3 output, part 1](../screenshots/full%20phase%203%20(1).png)
 ![Full Phase 3 output, part 2](../screenshots/full%20phase%203%20(2)%20.png)
