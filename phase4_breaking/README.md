@@ -54,6 +54,7 @@ Reports: [`SAN mismatch/tls_report_break2_fail.txt`](https://github.com/mk2514k/
 
 ![Nginx config with weak cipher break applied](./weak%20cipher%20suite/gninx%20config-weak%20cipher%20break.png)
 
+
 Reports: [`broken chain of trust/tls_report_break3_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_fail.txt) · [`broken chain of trust/tls_report_break3_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break3_broken_chain_of_trust/tls_report_break3_pass.txt`)
 
 
@@ -64,6 +65,7 @@ Reports: [`broken chain of trust/tls_report_break3_fail.txt`](https://github.com
 **What the auditor caught:** Cipher Suite FAIL, naming the specific weakness (e.g. SWEET32 for 3DES, POODLE/Lucky13 for CBC-mode ciphers) and pointing directly at the Nginx directive to fix.
 
 Reports: [`weak cipher suite/tls_report_break4_fail.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break4_weak_cipher/tls_report_break4_fail.txt) · [`weak cipher suite/tls_report_break4_pass.txt`](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/break4_weak_cipher/tls_report_break4_pass.txt)
+
 
 ## Auditor Enhancements post Break 1:
 
