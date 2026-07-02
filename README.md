@@ -1,6 +1,6 @@
 # PKI & TLS Auditor
 
-A private 2-tier certificate authority built from scratch in OpenSSL, wired into an Nginx TLS server, and checked by a python auditor to validate the whole chain. The auditor verifies cert validity, hostname match, cipher strength, chain of trust, and protocol version. I then deliberately broke four parts of it to confirm the auditor actually catches what it claims to catch.
+A private 2-tier certificate authority built from scratch in OpenSSL, wired into an Nginx TLS server, and checked by a python auditor to validate the whole chain. The auditor verifies cert validity, hostname match, cipher strength, chain of trust, and protocol version.
 
 ## The Core System
 
@@ -32,10 +32,10 @@ Python auditor (6 checks) ──► pass/fail TLS report
 
 | Phase | What it proves |
 |---|---|
-| [Phase 1: 2-Tier CA](./phase1_2TierCA/README.md) | Built the actual trust chain by hand- root key, intermediate key, signing flow, and the config decisions behind each one. |
-| [Phase 2: Nginx TLS](./phase2_NginxConfig/README.md) | Took the cert chain from Phase 1 and got a real server enforcing TLS 1.2/1.3 only, with the permission and pathing problems that came with it. |
-| [Phase 3: Python Auditor](./phase3_pythonAuditor/README.md) | Wrote the script that checks all of the above- connection, expiry, SAN, cipher, chain, protocol version. Also explains every failure in plain language. |
-| [Phase 4: Breaking](./phase4_breaking/README.md) | Broke the system four different ways on purpose and used the auditor to catch each one, this also exposed and fixed real bugs in the auditor itself. |
+| [Phase 1: 2-Tier CA](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase1_2TierCA/README.md) | Built the actual trust chain by hand- root key, intermediate key, signing flow, and the config decisions behind each one. |
+| [Phase 2: Nginx TLS](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase2_NginxConfig/README.md) | Took the cert chain from Phase 1 and got a real server enforcing TLS 1.2/1.3 only, with the permission and pathing problems that came with it. |
+| [Phase 3: Python Auditor](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase3_pythonAuditor/README.md) | Wrote the script that checks all of the above- connection, expiry, SAN, cipher, chain, protocol version. Also explains every failure in plain language. |
+| [Phase 4: Breaking](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase4_breaking/README.md) | Broke the system four different ways on purpose and used the auditor to catch each one, this also exposed and fixed real bugs in the auditor itself. |
 
 ## Audit Logic & Scope
 
