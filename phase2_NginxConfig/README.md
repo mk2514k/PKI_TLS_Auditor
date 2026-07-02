@@ -1,6 +1,6 @@
 # Phase 2: Nginx TLS Configuration
 
-[← Root README](../README.md) · [← Phase 1](../phase1_2TierCA/README.md) · [Phase 3 →](../phase3_pythonAuditor/README.md) · Full build log: [NOTES.md](./NOTES.md)
+[← Root README](../README.md) · [← Phase 1](../phase1_2TierCA/README.md) · [Phase 3 →](../phase3_pythonAuditor/README.md) · Full build log: [NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase2_NginxConfig/phase2_notes.md)
 
 ## Core Phase Objective
 
@@ -74,4 +74,4 @@ And verify the TLS handshake from the command line:
 openssl s_client -connect server.cyberpathway.lab:443 -CAfile phase1_2TierCA/certs/rootCA/cert/rootCA.cert
 ```
 
-Full decision-by-decision breakdown and the raw troubleshooting trail for all five mistakes are in [NOTES.md](./NOTES.md).
+Full decision-by-decision breakdown and the raw troubleshooting trail for all five mistakes are in [NOTES.md](https://github.com/mk2514k/PKI_TLS_Auditor/blob/main/phase2_NginxConfig/phase2_notes.md).
